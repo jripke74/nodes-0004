@@ -60,18 +60,6 @@ mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     console.log("Connected!!!");
-    User.findOne().then((user) => {
-      if (!user) {
-        const user = new User({
-          name: "Max",
-          email: "max@test.com",
-          cart: {
-            items: [],
-          },
-        });
-        user.save();
-      }
-    });
     app.listen(3000);
   })
   .catch((err) => {
