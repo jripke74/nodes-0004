@@ -49,6 +49,7 @@ exports.getSignup = (req, res, next) => {
       password: "",
       consfirmPassword: "",
     },
+    validationErrors: [],
   });
 };
 
@@ -109,6 +110,7 @@ exports.postSignup = (req, res, next) => {
         password: password,
         consfirmPassword: req.body.consfirmPassword,
       },
+      validationErrors: errors.array(),
     });
   }
   bcrypt
