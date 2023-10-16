@@ -3,7 +3,6 @@ const { check, body } = require("express-validator");
 
 const authController = require("../controllers/auth");
 const User = require("../models/user");
-const user = require("../models/user");
 
 const router = express.Router();
 
@@ -52,10 +51,10 @@ router.post(
     body("confirmPassword")
       .trim()
       .custom((value, { req }) => {
-        console.log(value, req.body.password);
         if (value !== req.body.password) {
           throw new Error("Password have to match!");
         }
+        return true;
       }),
   ],
   authController.postSignup
