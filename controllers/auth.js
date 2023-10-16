@@ -9,7 +9,6 @@ const sendgridApi = require("../util/secrets").sendgridApi;
 const myEmail = require("../util/secrets").myEmail;
 
 const User = require("../models/user");
-const user = require("../models/user");
 
 const transporter = nodemailer.createTransport(
   sendgridTransort({
@@ -151,13 +150,12 @@ exports.postSignup = (req, res, next) => {
     })
     .then((result) => {
       res.redirect("/login");
-      console.log(myEmail);
-      return transporter.sendMail({
-        to: email,
-        from: myEmail,
-        subject: "Signup succeeded!",
-        html: "<h1>You successfully signed up!</h1>",
-      });
+      // return transporter.sendMail({
+      //   to: email,
+      //   from: myEmail,
+      //   subject: "Signup succeeded!",
+      //   html: "<h1>You successfully signed up!</h1>",
+      // });
     })
     .catch((err) => {
       console.log(err);
@@ -204,7 +202,6 @@ exports.postReset = (req, res, next) => {
       })
       .then((result) => {
         res.redirect("/");
-        console.log(`http://localhost:3000/reset/${token}`);
         transporter.sendMail({
           to: req.body.email,
           from: "jeff@ripke.io",
