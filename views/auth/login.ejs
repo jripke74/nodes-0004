@@ -14,7 +14,7 @@
             <div class="form-control">
                 <label for="email">E-Mail</label>
                 <input 
-                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                    class="<%= validationErrors.find(e => e.path === 'email') ? 'invalid' : '' %>"
                     type="email" 
                     name="email" id="email" 
                     value="<%= oldInput.email %>">
@@ -22,7 +22,7 @@
             <div class="form-control">
                 <label for="password">Password</label>
                 <input 
-                    class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                    class="<%= validationErrors.find(e => e.path === 'email') ? 'invalid' : '' %>"
                     type="password" 
                     name="password" 
                     id="password" 
